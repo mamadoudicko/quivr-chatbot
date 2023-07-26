@@ -31,7 +31,7 @@ export const Layout = ({
           onClose={() => setShowModal(false)}
           className='fixed right-0 bottom-0 z-50'
         >
-            <Dialog.Panel className="bg-white m-20 p-6 pt-0 pb-3 shadow-md rounded-lg z-50 flex flex-col text-black flex flex-1 flex-col w-[400px] h-[600px]">
+            <Dialog.Panel className="bg-white m-20 pt-0 pb-3 shadow-2xl rounded-lg z-50 flex flex-col text-black flex flex-1 flex-col w-[400px] h-[600px] border-2 border-[#d1d1d1]">
               {
               children
               }

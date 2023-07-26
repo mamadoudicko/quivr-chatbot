@@ -12,7 +12,7 @@ export const useApp = () => {
 
   const [inputValue, setInputValue] = useState<string>("");
     useState(false);
-const {addQuestion,chatHistory,} = useChat()
+const {addQuestion,chatHistory,generatingAnswer} = useChat()
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleClose = () => {
@@ -38,7 +38,8 @@ const {addQuestion,chatHistory,} = useChat()
     inputRef,
 chatHistory,
     inputValue,
-    handleSubmit
+    handleSubmit,
+    generatingAnswer
 
 
   };

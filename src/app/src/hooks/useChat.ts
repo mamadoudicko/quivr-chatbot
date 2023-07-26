@@ -41,7 +41,6 @@ const {axiosInstance} = useAxios()
       setGeneratingAnswer(true);
 
       let currentChatId = chatId;
-      console.log({currentChatId})
 
       if (currentChatId === undefined) {
         const chatName = question.split(" ").slice(0, 3).join(" ");
@@ -49,7 +48,6 @@ const {axiosInstance} = useAxios()
     await axiosInstance.post("/chat", { name: chatName })
   ).data;
 
-  console.log({createdChat})
         currentChatId = createdChat.chat_id;
         setChatId(currentChatId);
       }

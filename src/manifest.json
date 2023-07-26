@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Chatbot Extension",
+  "description": "Chatbot Extension",
+  "version": "0.0.1",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": ["*://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["./contentScript.js", "./main.js"],
+      "css": ["./index.css"]
+    }
+  ],
+
+  "options_page": "set_token.html"
+}

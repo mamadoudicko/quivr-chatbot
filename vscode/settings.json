@@ -1,0 +1,11 @@
+{
+    "editor.formatOnSave": true,
+    "editor.onSaveMode": "modifications",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "sortImports.sortImports": true,
+        "source.fixAll.stylelint": true,
+        "source.organizeImports": true
+    },
+    "source.organizeImports": true
+}

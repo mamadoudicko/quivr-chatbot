@@ -22,6 +22,7 @@ specifiers:
   postcss: ^8.4.27
   react: ^18.2.0
   react-dom: ^18.2.0
+  react-frame-component: ^5.2.6
   tailwindcss: ^3.3.3
   terser: ^5.19.2
   typescript: ^5.0.2
@@ -41,6 +42,7 @@ dependencies:
   http-cache-semantics: 4.1.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-frame-component: 5.2.6_biqbaboplfbrettd7655fr4n2y
   vite-plugin-css-injected-by-js: 3.2.1_vite@4.4.7
   vite-tsconfig-paths: 4.2.0_npxhaqyhuvoil5zmsh4ym23fea
 
@@ -1846,6 +1848,17 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-frame-component/5.2.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-CwkEM5VSt6nFwZ1Op8hi3JB5rPseZlmnp5CGiismVTauE6S4Jsc4TNMlT0O7Cts4WgIC3ZBAQ2p1Mm9XgLbj+w==}
+    peerDependencies:
+      prop-types: ^15.5.9
+      react: '>= 16.3'
+      react-dom: '>= 16.3'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react-refresh/0.10.0:

@@ -23,7 +23,7 @@ export const useChat = () => {
     chat_id: "chat-welcome-1",
     message_id: "message-welcome-1",
     user_message: "",
-    assistant: "Hello, how can i help you?",
+    assistant: "Comment puis-je vous aider ?",
     message_time: "",
   }
 ] 

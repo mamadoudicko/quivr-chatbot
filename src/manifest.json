@@ -7,11 +7,17 @@
   "background": {
     "service_worker": "background.js"
   },
-  "host_permissions": ["*://*/*"],
-  "content_scripts": [
+  "host_permissions": ["*"],
+    "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./contentScript.js", "./main.js"]
+      "js": ["./contentScript.js"]
     }
-  ]
+  ],
+   "web_accessible_resources": [
+        {
+          "resources": ["iframe.html"], 
+          "matches": ["https://*/*", "http://*/*"]
+        }
+      ]
 }

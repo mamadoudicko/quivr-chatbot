@@ -27,7 +27,6 @@ specifiers:
   terser: ^5.19.2
   typescript: ^5.0.2
   vite: ^4.4.5
-  vite-plugin-css-injected-by-js: ^3.2.1
   vite-tsconfig-paths: ^4.2.0
 
 dependencies:
@@ -43,7 +42,6 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-frame-component: 5.2.6_biqbaboplfbrettd7655fr4n2y
-  vite-plugin-css-injected-by-js: 3.2.1_vite@4.4.7
   vite-tsconfig-paths: 4.2.0_npxhaqyhuvoil5zmsh4ym23fea
 
 devDependencies:
@@ -2154,14 +2152,6 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
-
-  /vite-plugin-css-injected-by-js/3.2.1_vite@4.4.7:
-    resolution: {integrity: sha512-8UQWy7tcmgwkaUKYfbj/8GOeAD0RPG2tdetAGg7WikWC8IEtNrovs8RRuLjFqdRqORT1XxchBB5tPl6xO/H95g==}
-    peerDependencies:
-      vite: '>2.0.0-0'
-    dependencies:
-      vite: 4.4.7_ysk4c5gbitizd4ze6x6qabbjt4
-    dev: false
 
   /vite-tsconfig-paths/4.2.0_npxhaqyhuvoil5zmsh4ym23fea:
     resolution: {integrity: sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==}

@@ -1,14 +1,13 @@
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import { defineConfig } from "vite";
-import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
+
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [reactRefresh(), tsconfigPaths(),
-   cssInjectedByJsPlugin(),],
+  plugins: [reactRefresh(), tsconfigPaths(), ],
   build: {
     rollupOptions: {
-      input: "/src/index.tsx",
+      input: "/src/main.tsx",
       output: {
         entryFileNames: "main.js",
         assetFileNames: (assetInfo) => {

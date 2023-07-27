@@ -7,5 +7,5 @@
         "source.fixAll.stylelint": true,
         "source.organizeImports": true
     },
-    "source.organizeImports": true
+    "source.organizeImports": true,
 }

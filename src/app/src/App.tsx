@@ -1,8 +1,10 @@
 import { Dialog } from "@headlessui/react";
+import { Fragment } from "react";
 import { Layout } from "./Layout";
 import { Logo } from "./components/Logo";
 import { MessageBubble } from "./components/MessageBubble";
 import { useApp } from "./hooks/useApp";
+import { SettingsView } from "./view/SettingsView/SettingsView";
 
 function App() {
   const {
@@ -14,9 +16,20 @@ function App() {
     showModal,
     chatHistory
     ,handleSubmit,
-    generatingAnswer
+    generatingAnswer,
+    showSettings,setShowSettings,
+    currentBrain
     
   } = useApp();
+
+
+  if(showSettings){
+    return (
+    <Layout setShowModal={setShowModal} showModal={showModal}>
+      <SettingsView close={() => setShowSettings(false)} />
+    </Layout>
+    )
+  }
 
  
 
@@ -26,10 +39,13 @@ function App() {
         <div className="flex flex-row items-center">
           <Logo/>
           <Dialog.Title className="text-lg  font-semibold text-center text-black">
-            Assistant 🤖
+            { currentBrain?.name ?? "Assistant 🤖"}
           </Dialog.Title>
         </div>
-        <div>
+        <div className="flex flex-row items-center justify-center">
+          <button className="font-bold text-black text-xl mr-4" onClick={() => setShowSettings(true)}>
+            🧠
+          </button>
           <button className="font-bold text-black" onClick={handleClose}>
             x
           </button>
@@ -37,25 +53,23 @@ function App() {
       </div>
     <div className="flex-1 overflow-scroll px-4">
       {chatHistory.map((discussion) => (
-        <>
+        <Fragment key={discussion.message_id}>
           <MessageBubble
-            key={`${discussion.message_id}-user`}
             message={discussion.user_message}
             sender={'user'}
           />
           <MessageBubble
-            key={`${discussion.message_id}-assistant`}
             message={discussion.assistant}
             sender={'assistant'}
           />
-        </>
+        </Fragment>
       ))}
     </div>
     {generatingAnswer && (
         <p className="px-6">
           Thinking...
       </p>)}
-    <div className="flex flex-col px-4 border-t-2 border-[#d1d1d1]">
+    <div className="flex mb-3 flex-col px-4 border-t-2 border-[#d1d1d1]">
         <div className="flex flex-1">
           <div className="w-full align-start">
             <form onSubmit={e => {

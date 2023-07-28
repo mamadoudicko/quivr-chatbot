@@ -2,6 +2,7 @@
 import axios, { AxiosError } from "axios";
 import { UUID } from "crypto";
 import { useEffect, useState } from "react";
+import { getCurrentWebsiteUrl } from "../utils/getCurrentWebsiteUrl";
 import { useAxios } from "../utils/useAxios";
 
 const roles = ["Viewer", "Editor", "Owner"] as const;
@@ -43,18 +44,29 @@ const [isDeleting,setIsDeleting] = useState(false)
         }
     };
 
+const getWebsiteNameWithoutExtension = (url:string) =>{
+  const parsedUrl = new URL(url);
+  let websiteName = parsedUrl.hostname.replace(/^www\./, "");
 
-class NamedFile extends File {
-  constructor(blobParts: BlobPart[], filename: string, options?: FilePropertyBag) {
-    super(blobParts, filename, options);
+  const parts = websiteName.split(".");
+  if (parts.length > 1) {
+    parts.pop(); // Remove the last part (extension)
+    websiteName = parts.join(".");
   }
+
+  return websiteName;
 }
 
 const crawlCurrentWebsite = async (brainId: string, content: string) => {
   setIsCrawling(true);
+  const currentWebsiteUrl = await getCurrentWebsiteUrl();
+
+  const currentWebsiteName = getWebsiteNameWithoutExtension(currentWebsiteUrl)
+
+
   try {
     // Create a NamedFile instance with the specified content and filename
-    const file = new NamedFile([content], window.location.href , { type: "text/plain" });
+    const file = new File([content], `${currentWebsiteName}.txt` , { type: "text/plain" });
     const formData = new FormData();
     formData.append("uploadFile", file);
     await axiosInstance.post(`/upload?brain_id=${brainId}`, formData);

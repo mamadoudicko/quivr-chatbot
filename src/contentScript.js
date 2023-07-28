@@ -43,7 +43,7 @@ function addIframeToDOM() {
     button.style.textDecoration = "none";
     button.style.display = "inline-block";
     button.style.transition = "background-color 0.3s ease";
-
+    button.style.zIndex = "2147483647";
 
     button.addEventListener('click', () => {
         iframe.style.pointerEvents = "auto";
@@ -63,3 +63,44 @@ function addIframeToDOM() {
 }
 
 addIframeToDOM();
+
+
+
+// Function to get the current page's URL
+function getCurrentPageURL() {
+  return new Promise((resolve) => {
+    // Get the current page's URL
+    const currentPageURL = window.location.href;
+
+    // Resolve the Promise with the URL
+    resolve(currentPageURL);
+  });
+}
+
+// Function to get the favicon link
+function getFaviconLink() {
+  const faviconLink = document.querySelector("link[rel~='icon']");
+
+  // Return the favicon link's href or null if not found
+  return faviconLink ? faviconLink.href : undefined;
+}
+
+
+// Listen for messages from the iframe
+window.addEventListener('message', async (event) => {
+  if (event.data.type === 'getUrl') {
+    // Get the current page's URL using the Promise
+    const currentPageURL = await getCurrentPageURL();
+
+    // Send the response back to the iframe
+    event.source.postMessage({ type: 'currentPageURL', url: currentPageURL }, event.origin);
+    return 
+  }
+  if (event.data.type === 'getFaviconLink') {
+    // Get the favicon link and send the response back to the iframe
+    const faviconLink = getFaviconLink();
+    event.source.postMessage({ type: 'faviconLink', link: faviconLink }, event.origin);
+  }
+
+});
+

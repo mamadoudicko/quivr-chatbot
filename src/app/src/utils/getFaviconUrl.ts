@@ -1,9 +1,10 @@
-export  const getFaviconUrl = () => {
-    const faviconLink = document.querySelector("link[rel~='icon']");
+import { sendMessageAndWaitForResponse } from "./sendMessageAndWaitForResponse";
 
-    if (faviconLink !== null) {
-        const href = faviconLink.getAttribute("href");
-        return href
+
+export const getFaviconUrl = async () => {
+    try {
+        return await sendMessageAndWaitForResponse({ type: 'getFaviconLink' });
+    } catch (error) {
+        console.error('Error getting favicon link:', error);
     }
-    return undefined
 };

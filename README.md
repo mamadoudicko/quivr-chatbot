@@ -1,6 +1,10 @@
 # Quivr Chrome Extension
 
-![Quivr Extension Logo](https://raw.githubusercontent.com/StanGirard/quivr/main/logo.png)
+
+<div align="center">
+    <img src="./logo.png" alt="Quivr-logo" width="30%"  style="border-radius: 50%; padding-bottom: 20px"/>
+</div>
+
 
 Welcome to the Quivr Chrome Extension! This extension allows you to access Quivr as a chatbot from any website, empowering you with the capabilities of your second brain enhanced by Generative AI.
 

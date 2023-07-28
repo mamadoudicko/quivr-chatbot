@@ -4,24 +4,25 @@ import { useSettingsView } from "../view/SettingsView/hooks/useSettingsView";
 import { useBrains } from "./useBrains";
 import { useChat } from "./useChat";
 
-
-
-
-
 export const useApp = () => {
   const [showModal, setShowModal] = useState(
     process.env.NODE_ENV === "development"
   );
 
+  useEffect(() => {
+    if (!showModal) {
+      window.parent.postMessage('CLOSE_EXTENSION', '*');
+    } 
+  }, [showModal]);
+
+
   const [inputValue, setInputValue] = useState<string>("");
-    useState(false);
 
     const [showSettings,setShowSettings] = useState(false);
 
 
     const {settings} = useSettingsView() ;
     const {brains} = useBrains() ;
-    
 
     useEffect(()=> {
       const checkConfigs = async () => {

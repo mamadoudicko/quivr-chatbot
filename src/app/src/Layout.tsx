@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import FakeComponent from "./components/FakeComponent";
 
 export type LayoutProps = {
@@ -12,6 +12,23 @@ export const Layout = ({
   showModal,
   children,
 }: LayoutProps): JSX.Element => {
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data === 'OPEN_EXTENSION') {
+        setShowModal(true);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, []);
+
+
   return (
     <div >
       {process.env.NODE_ENV === "development" && (
@@ -38,12 +55,6 @@ export const Layout = ({
             </Dialog.Panel>
         </Dialog>
       </Transition>
-       <button
-        className="fixed bottom-0 right-0 m-4 p-2 bg-black text-white rounded-full shadow-lg"
-        onClick={() => setShowModal(true)}
-      >
-        Open Quivr
-      </button>
     </div>
   );
 };

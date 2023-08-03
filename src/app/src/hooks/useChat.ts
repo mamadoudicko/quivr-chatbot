@@ -3,7 +3,6 @@ import { AxiosError } from "axios";
 import { useState } from "react";
 import { useAxios } from "../utils/useAxios";
 
-const brainId = "eb339cc0-c411-47a7-bba1-0c21063156ae"
 
 export type ChatHistory = {
   chat_id: string;
@@ -13,7 +12,7 @@ export type ChatHistory = {
   message_time: string;
 };
 
-export const useChat = () => {
+export const useChat = (brainId:string | undefined) => {
   const [chatId, setChatId] = useState<string>();
 
   

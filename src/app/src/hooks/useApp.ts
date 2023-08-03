@@ -39,7 +39,7 @@ export const useApp = () => {
 
   const currentBrain = brains.find(brain => brain.id === settings.currentBrainId)
 
-const {addQuestion,chatHistory,generatingAnswer} = useChat()
+const {addQuestion,chatHistory,generatingAnswer} = useChat(settings?.currentBrainId)
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleClose = () => {
